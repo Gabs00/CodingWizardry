@@ -40,10 +40,3 @@ Money.isValid = function(money){
 
 Money.add = function(){
 }
-
-//for testing
-var a = {a:'10.00', b:'10,00,'};
-var b = ['10.000', '1,000'];
-var c = "100.00";
-var e = "1,000,00";
-console.log(Money.isValid(a), "|", Money.isValid(b), "|", Money.isValid(c), "|", Money.isValid(e), "|", Money.isValid());
