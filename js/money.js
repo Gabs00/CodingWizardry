@@ -1,20 +1,42 @@
 //A class that parses money
 function Money(){
-	Object.defineProperty(this, 'isValid', {
-		enumerable: false,
-		writable: false,
-		value: new RegExp(/^((\d{0,3}(,\d{3})+)|\d+)(\.\d{2})?$/)
-	});
-	if(arguments.length > 0){
-		for(var i = 0; i < arguments.length; i++){
-			if(this.isValid.test(arguments[i])){
-				this[i] = arguments[i];
+
+}
+Money.prototype = new Object();
+Money.isValid = function(money){
+	var reg = /^((\d{0,3}(,\d{3})+)|\d+)(\.\d{2})?$/;
+	var results;
+	if(Array.isArray(money)){
+		results = [];
+		money.forEach(function(value){
+			if(reg.test(value)){
+				results.push(true);
+			}
+			else{
+				results.push(false);
+			}
+		})
+	}
+	else if(typeof money === 'object'){
+		results = {};
+		for(var i in money){
+			if(reg.test(money[i])){
+				results[i] = true;
+			}
+			else{
+				results[i] = false;
 			}
 		}
 	}
-
+	else {
+		results = reg.test(money);
+	}
+	return results;
 }
 
 //for testing
-var a = new Money("100.00");
-console.log(a);
+var a = {a:'10.00', b:'10,00,'};
+var b = ['10.000', '1,000'];
+var c = "100.00";
+var e = "1,000,00";
+console.log(Money.isValid(a), "|", Money.isValid(b), "|", Money.isValid(c), "|", Money.isValid(e));
