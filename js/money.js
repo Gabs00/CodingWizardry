@@ -1,9 +1,13 @@
 //A class that parses money
 function Money(){
-
 }
+
 Money.prototype = new Object();
+
 Money.isValid = function(money){
+	if(!(money)){
+		return;
+	}
 	var reg = /^((\d{0,3}(,\d{3})+)|\d+)(\.\d{2})?$/;
 	var results;
 	if(Array.isArray(money)){
@@ -34,9 +38,12 @@ Money.isValid = function(money){
 	return results;
 }
 
+Money.add = function(){
+}
+
 //for testing
 var a = {a:'10.00', b:'10,00,'};
 var b = ['10.000', '1,000'];
 var c = "100.00";
 var e = "1,000,00";
-console.log(Money.isValid(a), "|", Money.isValid(b), "|", Money.isValid(c), "|", Money.isValid(e));
+console.log(Money.isValid(a), "|", Money.isValid(b), "|", Money.isValid(c), "|", Money.isValid(e), "|", Money.isValid());
