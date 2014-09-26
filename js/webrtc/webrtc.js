@@ -1,0 +1,1 @@
+var client = io.connect('/');
