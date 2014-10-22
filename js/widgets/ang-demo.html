@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Angular Widget Demos</title>
+</head>
+<body ng-app = "demo">
+
+  <cw-basicnav ng-controller="MainCtrl">
+  </cw-basicnav>
+  <ui-view></ui-view>
+
+  <script src="..\..\bower_components\angular\angular.js"></script>
+  <script src="..\..\bower_components\angular-ui-router\release\angular-ui-router.js"></script>
+  <script src="..\..\js\widgets\basic-navbar\navbar.js"></script>
+  <script>
+    angular.module('demo', ['cw-basic-nav']);
+  </script>
+</body>
+</html>
